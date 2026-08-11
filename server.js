@@ -233,10 +233,10 @@ app.post('/api/login', (req, res) => {
   //   newSession: true,
   // });
 
-  // res.json({
-  //   success: true,
-  //   user: { username: user.username, name: user.name, email: user.email },
-  // });
+  res.json({
+    success: true,
+    user: { username: user.username, name: user.name, email: user.email },
+  });
 });
 
 // --- Logout ---
