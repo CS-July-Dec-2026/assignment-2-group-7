@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopLux — Premium Shopping Experience</title>
+  <meta name="description" content="Discover curated premium products at ShopLux. Luxury headphones, watches, fashion, and tech.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">💎</span>
+        <span class="brand-text">ShopLux</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#products" class="nav-link">Collection</a>
+        <a href="#" class="nav-link">About</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="cart-btn" class="nav-btn cart-btn" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span id="cart-count" class="cart-count">0</span>
+        </button>
+
+        <!-- Auth section: shows login button or user avatar -->
+        <div id="auth-section">
+          <button id="login-btn" class="btn btn-primary btn-sm">Sign In</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ CURATED COLLECTION 2026</p>
+      <h1 class="hero-title">
+        Discover<br>
+        <span class="gradient-text">Premium</span> Products
+      </h1>
+      <p class="hero-subtitle">Handpicked luxury items for the modern lifestyle. Quality craftsmanship meets timeless design.</p>
+      <a href="#products" class="btn btn-primary btn-lg hero-cta">
+        Explore Collection
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section class="products-section" id="products">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Collection</h2>
+        <p class="section-subtitle">Premium products selected for you</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-tab active" data-category="all">All</button>
+      </div>
+
+      <div id="products-grid" class="products-grid">
+        <!-- Products loaded via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CART SIDEBAR ═══ -->
+  <div id="cart-overlay" class="overlay"></div>
+  <aside id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button id="close-cart" class="close-btn" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="cart-items" class="cart-items">
+      <div class="cart-empty">
+        <span class="cart-empty-icon">🛒</span>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div id="cart-footer" class="cart-footer" style="display:none;">
+      <div class="cart-summary">
+        <div class="cart-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="cart-row">
+          <span>Shipping</span>
+          <span class="free-shipping">FREE</span>
+        </div>
+        <div class="cart-divider"></div>
+        <div class="cart-row cart-total-row">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block checkout-btn">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══ LOGIN MODAL ═══ -->
+  <div id="login-overlay" class="overlay"></div>
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <button id="close-modal" class="close-btn" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="modal-icon">💎</span>
+        <h2>Welcome Back</h2>
+        <p>Sign in to your ShopLux account</p>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+        </div>
+        <div id="login-error" class="error-msg" style="display:none;"></div>
+        <button type="submit" id="submit-login" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+
+      <div class="demo-creds">
+        <p>Demo accounts</p>
+        <code>alice / password123</code>
+        <code>bob / password456</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TOAST CONTAINER ═══ -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ═══ SESSION DEBUG PANEL ═══ -->
+  <div id="debug-panel" class="debug-panel">
+    <button id="debug-toggle" class="debug-toggle">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Session Debug
+    </button>
+    <div id="debug-content" class="debug-content">
+      <div class="debug-row">
+        <span class="debug-label">Session ID</span>
+        <span id="debug-sid" class="debug-value mono">—</span>
+      </div>
+      <div class="debug-row">
+        <span class="debug-label">Status</span>
+        <span id="debug-status" class="debug-value">—</span>
+      </div>
+      <div class="debug-row">
+        <span class="debug-label">Logged in as</span>
+        <span id="debug-user" class="debug-value">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 ShopLux. All rights reserved. <span class="footer-note">⚠️ Educational demo — contains deliberate vulnerabilities.</span></p>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

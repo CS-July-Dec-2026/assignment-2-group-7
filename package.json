@@ -1,0 +1,14 @@
+{
+  "name": "shoplux-session-fixation-demo",
+  "version": "1.0.0",
+  "description": "ShopLux — A premium shopping website with a deliberate Session Fixation vulnerability for cybersecurity education",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2"
+  }
+}
